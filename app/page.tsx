@@ -55,15 +55,14 @@ function AutoInput({
         placeholder={placeholder}
         autoComplete="off"
         onChange={e => { onChange(e.target.value); setOpen(true); }}
-        onFocus={() => setOpen(true)}
-        onBlur={() => setTimeout(() => setOpen(false), 150)}
+        onFocus={(e: any) => { setOpen(true); e.target.style.borderColor = "var(--accent)"; }}
+        onBlur={(e: any) => { setTimeout(() => setOpen(false), 150); e.target.style.borderColor = "var(--border)"; }}
         style={{
           width: "100%", background: "var(--surface2)",
           border: "1px solid var(--border)", borderRadius: 10,
           padding: "12px 14px", fontSize: 14, fontFamily: "inherit",
           color: "var(--text)", outline: "none",
         }}
-        onFocus={(e: any) => (e.target.style.borderColor = "var(--accent)")}
       />
       {open && matches.length > 0 && (
         <div style={{
